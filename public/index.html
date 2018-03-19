@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>FFXIV - Demon Fam Mats List</title>
+  <link rel="stylesheet" type="text/css" href="css/style.css">
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
+</head>
+<body>
+  <div class="container">
+    <div class="row top-3">
+      <div class="col-12">
+        <label for="autocomplete">Search item: </label>
+        <input id="autocomplete">
+      </div>
+    </div>
+  </div>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script type="text/javascript">
+    $.get( "https://api.xivdb.com/recipe", function( data ) {
+      var name = []
+        for (var i = 0; i < data.length; i++) {
+          name.push(data[i].name)
+        }
+      console.log(name)
+      $( "#autocomplete" ).autocomplete({
+        source: function( request, response ) {
+          var matcher = new RegExp( "^" + $.ui.autocomplete.escapeRegex( request.term ), "i" );
+            response( $.grep( name, function( item ){
+              return matcher.test( item );
+            }) );
+          }
+      });
+
+    });
+
+    
+  </script>
+</body>
+</html>
