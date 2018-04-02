@@ -24,10 +24,10 @@
     "postcss-each": "^0.10.0",
     "postcss-for": "^2.1.1",
     "postcss-import": "^11.1.0",
-    "postcss-nesting": "^4.2.1"
+    "postcss-nesting": "^4.2.1",
+    "postcss-css-variables": "^0.8.0"
   },
   "devDependencies": {
-    "errorhandler": "^1.5.0",
-    "postcss-css-variables": "^0.8.0"
+    "errorhandler": "^1.5.0"
   }
 }

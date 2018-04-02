@@ -1,3 +1,6 @@
+:root {
+  font-size: 14px;
+}
 /* http://meyerweb.com/eric/tools/css/reset/ 
    v2.0 | 20110126
    License: none (public domain)
@@ -402,7 +405,77 @@ body {
   font-family: 'Open Sans', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  color: #232323;
+  line-height: 1.25rem;
+}
+h1 {
+  text-align: center;
+  font-size: 1.25rem;
+  line-height: 1.56rem;
+  font-weight: bold;
+}
+h2 {
+  font-size: 1rem;
+  line-height: 1.25rem;
+  font-weight: bold;
+}
+label {
+  text-transform: uppercase;
+  font-size: .75rem;
+  font-weight: bold;
 }
 input {
-  padding: 5px 15px;
+  padding: 15px 15px;
+  border: 1px solid #ddd;
+  width: 100%;
+  box-sizing: border-box;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 1rem;
+}
+.remove {
+  float: left;
+  color: red;
+  padding: 10px;
+  line-height: 1rem;
+  font-weight: bold;
+  background: #ddd;
+  border-radius: 10px;
+  text-transform: uppercase;
+  margin-right: 10px;
+}
+.material-item {
+  border: 1px solid red;
+}
+.itemName {
+  box-sizing: border-box;
+  padding: 10px;
+  background-color: #ccc;
+
+}
+.matsHeader {
+  padding: 5px 10px;
+  background-color: #ddd;
+  text-transform: uppercase;
+  font-size: .75rem;
+  font-weight: bold
+}
+.matsHeader div:last-child {
+  text-align: right;
+}
+.autocompleteContent {
+  box-sizing: border-box;
+  border: 1px solid blue
+    
+}
+.autocompleteContent li {
+  padding: 10px;
+}
+.autocompleteContent li:nth-child(even) {
+  background-color: #eee;
+}
+.autocompleteContent li div:last-child {
+  text-align: right;
+}
+.test {
+  border: 1px solid red;
 }

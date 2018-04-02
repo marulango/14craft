@@ -1,0 +1,39 @@
+.itemName {
+  box-sizing: border-box;
+  padding: 10px;
+  background-color: #ccc;
+
+}
+
+.matsHeader {
+  padding: 5px 10px;
+  background-color: #ddd;
+  text-transform: uppercase;
+  font-size: .75rem;
+  font-weight: bold;
+
+  & div:last-child {
+    text-align: right;
+  }
+}
+.autocompleteContent {
+  box-sizing: border-box;
+  border: 1px solid blue;
+  & li {
+    padding: 10px;
+
+    &:nth-child(even) {
+      background-color: #eee;
+    }
+    & div {
+      &:last-child {
+        text-align: right;
+      }
+    }
+  }
+    
+}
+
+.test {
+  border: 1px solid red;
+}
