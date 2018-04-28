@@ -1,14 +1,16 @@
+.material-item{
+  border: 1px solid #D7DEE2;
+}
+
 .itemName {
   box-sizing: border-box;
   padding: 10px;
-  background-color: #ccc;
-
+  background-color: #D7DEE2;
 }
 
 .matsHeader {
   padding: 5px 10px;
-  background-color: #ddd;
-  text-transform: uppercase;
+  background-color: #E2E6E8;
   font-size: .75rem;
   font-weight: bold;
 
@@ -18,12 +20,11 @@
 }
 .autocompleteContent {
   box-sizing: border-box;
-  border: 1px solid blue;
   & li {
     padding: 10px;
 
     &:nth-child(even) {
-      background-color: #eee;
+      background-color: #F0F4F6;
     }
     & div {
       &:last-child {
@@ -34,6 +35,23 @@
     
 }
 
-.test {
-  border: 1px solid red;
+.remove {
+  width: 12px;
+  height: 12px;
+  display: inline-block;
+  margin-right:10px;
+}
+
+.remove:before, .remove:after {
+  position: absolute;
+  content: ' ';
+  height: 13px;
+  width: 2px;
+  background-color: #FF003E;
+}
+.remove:before {
+  transform: rotate(45deg);
+}
+.remove:after {
+  transform: rotate(-45deg);
 }

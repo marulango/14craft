@@ -10,12 +10,10 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+  },
+  "devDependencies": {
+    "errorhandler": "^1.5.0",
     "autoprefixer": "^8.1.0",
-    "axios": "^0.18.0",
-    "body-parser": "^1.18.2",
-    "express": "^4.16.2",
-    "lodash": "^4.17.5",
-    "nodemon": "^1.17.1",
     "postcss": "^6.0.19",
     "postcss-calc": "^6.0.1",
     "postcss-cli": "^5.0.0",
@@ -26,8 +24,5 @@
     "postcss-import": "^11.1.0",
     "postcss-nesting": "^4.2.1",
     "postcss-css-variables": "^0.8.0"
-  },
-  "devDependencies": {
-    "errorhandler": "^1.5.0"
   }
 }

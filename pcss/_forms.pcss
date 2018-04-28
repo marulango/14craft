@@ -5,25 +5,40 @@ label {
 }
 input {
   padding: 15px 15px;
-  border: 1px solid #ddd;
+  border: 1px solid #D7DEE2;
   width: 100%;
   box-sizing: border-box;
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'Helvetica Neue', 'Helvetica', sans-serif;
   font-size: 1rem;
+  transition: all 330ms ease-in-out;
+  &:focus {
+    box-shadow: 0 0 5px #4199FF;
+    outline: none;
+  }
 }
 
-.remove {
-  float: left;
-  color: red;
-  padding: 10px;
-  line-height: 1rem;
-  font-weight: bold;
-  background: #ddd;
-  border-radius: 10px;
-  text-transform: uppercase;
-  margin-right: 10px;
+.ui-widget-content{
+  max-width: 95%;
 }
 
-.material-item {
-  border: 1px solid red;
+.ui-menu {
+  background-color: white;
+  border: 1px solid #D7DEE2;
+  box-sizing: border-box;
+}
+
+.ui-menu-item-wrapper {
+  padding: 15px;
+}
+
+.ui-menu-item {
+  &:hover {
+    background-color: #4199FF;
+    color: white;
+    font-weight: bold;
+  }
+}
+
+.ui-helper-hidden-accessible {
+  display: none;
 }
