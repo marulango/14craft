@@ -35,9 +35,9 @@ All contributions to this are super welcome!
 4. Submit PR
 
 ## Future Functionality I'd like to add
--[] Showing/hiding shards needed
--[] Craftable amount counter, so if you want to craft more than just one you'll know how the exact mats amount you need
--[] Asigning items/mats to someone using their lodestone ID
--[] Saving sessions on device
--[] Totals of individual mats, instead of separating them per item
+- [] Showing/hiding shards needed
+- [] Craftable amount counter, so if you want to craft more than just one you'll know how the exact mats amount you need
+- [] Asigning items/mats to someone using their lodestone ID
+- [] Saving sessions on device
+- [] Totals of individual mats, instead of separating them per item
 
