@@ -2,51 +2,63 @@
   border: 1px solid #D7DEE2;
 }
 
-.itemName {
+.craftableItemName {
   box-sizing: border-box;
   padding: 10px;
   background-color: #D7DEE2;
 }
 
-.matsHeader {
+.mats-header {
   padding: 5px 10px;
   background-color: #E2E6E8;
   font-size: .75rem;
   font-weight: bold;
-
-  & div:last-child {
-    text-align: right;
-  }
 }
+
+.mats-qty {
+  text-align: right;
+}
+
 .autocompleteContent {
   box-sizing: border-box;
+
   & li {
     padding: 10px;
-
-    &:nth-child(even) {
+    border-top: 1px solid #E2E6E8;
+    &.mats-main:nth-child(even){
       background-color: #F0F4F6;
     }
-    & div {
-      &:last-child {
-        text-align: right;
+
+    & .mats-inner {
+      & li {
+        padding: 5px 0 5px 20px;
+        font-size: .85rem;
+        &:first-child{
+          margin-top: 10px;
+        }
+        &:last-child{
+          padding-bottom: 0;
+        }
       }
     }
   }
-    
 }
 
+
+
 .remove {
-  width: 12px;
-  height: 12px;
-  display: inline-block;
+  width: 22px;
+  height: 22px;
   margin-right:10px;
+  float: right;
 }
 
 .remove:before, .remove:after {
   position: absolute;
   content: ' ';
-  height: 13px;
+  height: 22px;
   width: 2px;
+  margin-left: 10px;
   background-color: #FF003E;
 }
 .remove:before {

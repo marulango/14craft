@@ -2,7 +2,7 @@
 var baseURL = 'https://api.xivdb.com'
 var $target = $('.autocompleteContent')
 
-$(document).on('click', '.remove', function (e) {
+$(document).on('click touchstart', '.remove', function (e) {
   $(e.target)
     .parent()
     .parent()
