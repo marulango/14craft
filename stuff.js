@@ -24,8 +24,9 @@ $.getJSON(`${baseURL}/recipe`, function (data) {
         var craftableItemName = data.name
         var itemWrapperName = craftableItemName.replace(/\s+/g, '-').replace(/'/g, '').toLowerCase()
         $target.prepend('<div class="material-item ' + itemWrapperName + '"></div>')
-        $('.' + itemWrapperName).append('<div class="craftableItemName"><div class="remove"></div><h2>' + craftableItemName + '</h2></div>')
-        $('.' + itemWrapperName).append('<div class="matsHeader row"><div class="col-8"><label>Material</label></div><div class="col-4"><label>QTY</label></div></div>')
+        $('.' + itemWrapperName).append('<div class="craftableItemName"><h2>' + craftableItemName + '</h2><div class="remove"></div></div>')
+        $('.' + itemWrapperName).append('<div class="matsHeader row"><div class="col-8"><label>Material</label></div><div class="col-4 matsQty "><label>QTY</label></div></div>')
+        $('.' + itemWrapperName).append('<div class="' + itemWrapperName + '-list itemListWrapper"></div>')
 
         var craftableTree = data.tree
 
@@ -35,14 +36,15 @@ $.getJSON(`${baseURL}/recipe`, function (data) {
           var itemSynths = treeNode.synths || {}
           console.log(itemName, itemQty)
           var innerWrapperName = itemName.replace(/\s+/g, '-').replace(/'/g, '').toLowerCase()
-          $('.' + itemWrapperName).append('<li class="row mainMat"><div class="col-8"><p>' + itemName + '</p></div><div class="col-4"><p>' + itemQty + '</p></div></li>')
+          $('.' + itemWrapperName + '-list').append('<li class="row ' + innerWrapperName + '"><div class="col-8"><p>' + itemName + '</p></div><div class="col-4 matsQty"><p>' + itemQty + '</p></div></li>')
+
           Object.keys(itemSynths).forEach(key => {
-            $('.' + itemWrapperName).append('<ul class="' + innerWrapperName + ' debug">Mats required for previous item</ul>')
+            $('.' + innerWrapperName).append('<ul class="' + innerWrapperName + '-list"></ul>')
             itemSynths[key].tree.forEach((material) => {
               var itemMats = material.name
               var itemMatsQty = material.quantity
               console.log('material name: ' + itemMats)
-              $('.' + innerWrapperName).append('<li class="row"><div class="col-8"><p>' + itemMats + '</p></div><div class="col-4">' + itemMatsQty + '</div></li>')
+              $('.' + innerWrapperName + '-list').append('<li class="row innerMat"><div class="col-8"><p>' + itemMats + '</p></div><div class="col-4 matsQty">' + itemMatsQty + '</div></li>')
             })
           })
         })
