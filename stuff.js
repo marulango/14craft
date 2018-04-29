@@ -1,10 +1,12 @@
+/* global $ */
 var baseURL = 'https://api.xivdb.com'
 var $target = $('.autocompleteContent')
 
-var $ul = document.createElement('div')
-
-$(document).on('click', '.remove', function (e) {
-  $(e.target).parent().parent().remove()
+$(document).on('click touchstart', '.remove', function (e) {
+  $(e.target)
+    .parent()
+    .parent()
+    .remove()
 })
 
 $('#autocomplete').focus(function () {
@@ -12,29 +14,86 @@ $('#autocomplete').focus(function () {
 })
 
 $.getJSON(`${baseURL}/recipe`, function (data) {
-  var name = data.map(item => ({ label: item.name, value: item.name, id: item.id }))
+  var name = data.map(item => ({
+    label: item.name,
+    value: item.name,
+    id: item.id
+  }))
 
   $('#autocomplete').autocomplete({
     source: (request, response) => {
-      var matcher = new RegExp('^' + $.ui.autocomplete.escapeRegex(request.term), 'i')
+      var matcher = new RegExp(
+        '^' + $.ui.autocomplete.escapeRegex(request.term),
+        'i'
+      )
       var found = name.filter(item => matcher.test(item.label))
       response(found)
     },
     select: (event, ui) => {
       $.getJSON(`${baseURL}/recipe/${ui.item.id}`, function (data) {
-        var itemName = data.name
-        itemClassName = itemName.replace(/\s+/g, '-').replace(/'/g, '').toLowerCase()
-        console.log(itemClassName)
-        $target.prepend('<div class="material-item ' + itemClassName + '"></div>')
-        $('.' + itemClassName).append('<div class="itemName"><div class="remove"></div><h2>' + itemName + '</h2></div>')
-        $('.' + itemClassName).append('<div class="matsHeader row"><div class="col-8"><label>Material</label></div><div class="col-4"><label>QTY</label></div></div>') // this could be a variable…?
+        var craftableItemName = data.name
+        var itemWrapperName = craftableItemName
+          .replace(/\s+/g, '-')
+          .replace(/'/g, '')
+          .toLowerCase()
+        $target.prepend(
+          '<div class="material-item ' + itemWrapperName + '"></div>'
+        )
+        $('.' + itemWrapperName).append(
+          '<div class="craftableItemName"><h2>' +
+                  craftableItemName +
+                  '</h2><div class="remove"></div></div>'
+        )
+        $('.' + itemWrapperName).append(
+          '<div class="mats-header row"><div class="col-8"><label>Material</label></div><div class="col-4 mats-qty "><label>QTY</label></div></div>'
+        )
+        $('.' + itemWrapperName).append(
+          '<div class="' +
+                  itemWrapperName +
+                  '-list itemListWrapper"></div>'
+        )
 
         var craftableTree = data.tree
-        if (craftableTree.length > 0 == true) {
-          for (var i = 0; i < craftableTree.length; i++) {
-            $('.' + itemClassName).append('<li class="row"><div class="col-8"><p>' + craftableTree[i].name + '</p></div><div class="col-4"><p>' + craftableTree[i].quantity + '</p></div></li>') // this can be much more legible. but idc about that rn
-          }
-        }
+
+        craftableTree.forEach(treeNode => {
+          var itemName = treeNode.name
+          var itemQty = treeNode.quantity
+          var itemSynths = treeNode.synths || {}
+          console.log(itemName, itemQty)
+          var innerWrapperName = itemName
+            .replace(/\s+/g, '-')
+            .replace(/'/g, '')
+            .toLowerCase()
+          $('.' + itemWrapperName + '-list').append(
+            '<li class="row mats-main ' +
+                     innerWrapperName +
+                     '"><div class="col-8"><p>' +
+                     itemName +
+                     '</p></div><div class="col-4 mats-qty"><p>' +
+                     itemQty +
+                     '</p></div></li>'
+          )
+
+          Object.keys(itemSynths).forEach(key => {
+            $('.' + innerWrapperName).append(
+              '<ul class="col-12 mats-inner ' +
+                        innerWrapperName +
+                        '-list"></ul>'
+            )
+            itemSynths[key].tree.forEach(material => {
+              var itemMats = material.name
+              var itemMatsQty = material.quantity
+              console.log('material name: ' + itemMats)
+              $('.' + innerWrapperName + '-list').append(
+                '<li class="row"><div class="col-8"><p>' +
+                           itemMats +
+                           '</p></div><div class="col-4 mats-qty">' +
+                           itemMatsQty +
+                           '</div></li>'
+              )
+            })
+          })
+        })
       })
     }
   })

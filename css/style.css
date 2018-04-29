@@ -1,5 +1,5 @@
 :root {
-  font-size: 14px;
+  font-size: 16px;
 }
 /* http://meyerweb.com/eric/tools/css/reset/ 
    v2.0 | 20110126
@@ -55,10 +55,10 @@ table {
 }
 .row{
     box-sizing: border-box;
-    display:flex;
-    flex:0 1 auto;
-    flex-direction:row;
-    flex-wrap:wrap;
+    display: flex;
+    flex: 0 1 auto;
+    flex-direction: row;
+    flex-wrap: wrap;
 }
 .col {
     flex-grow: 1;
@@ -403,7 +403,7 @@ h1 {
   font-weight: bold;
 }
 h2 {
-  font-size: 1rem;
+  font-size: 1.14rem;
   line-height: 1.25rem;
   font-weight: bold;
   display: inline;
@@ -448,44 +448,52 @@ input:focus {
 .material-item{
   border: 1px solid #D7DEE2;
 }
-.itemName {
+.craftableItemName {
   box-sizing: border-box;
   padding: 10px;
   background-color: #D7DEE2;
 }
-.matsHeader {
+.mats-header {
   padding: 5px 10px;
   background-color: #E2E6E8;
   font-size: .75rem;
-  font-weight: bold
+  font-weight: bold;
 }
-.matsHeader div:last-child {
+.mats-qty {
   text-align: right;
 }
 .autocompleteContent {
   box-sizing: border-box
-    
 }
 .autocompleteContent li {
   padding: 10px;
+  border-top: 1px solid #E2E6E8;
 }
-.autocompleteContent li:nth-child(even) {
+.autocompleteContent li.mats-main:nth-child(even) {
   background-color: #F0F4F6;
 }
-.autocompleteContent li div:last-child {
-  text-align: right;
+.autocompleteContent li .mats-inner li {
+  padding: 5px 0 5px 20px;
+  font-size: .85rem;
+}
+.autocompleteContent li .mats-inner li:first-child {
+  margin-top: 10px;
+}
+.autocompleteContent li .mats-inner li:last-child {
+  padding-bottom: 0;
 }
 .remove {
-  width: 12px;
-  height: 12px;
-  display: inline-block;
+  width: 22px;
+  height: 22px;
   margin-right:10px;
+  float: right;
 }
 .remove:before, .remove:after {
   position: absolute;
   content: ' ';
-  height: 13px;
+  height: 22px;
   width: 2px;
+  margin-left: 10px;
   background-color: #FF003E;
 }
 .remove:before {
@@ -495,4 +503,7 @@ input:focus {
 .remove:after {
   -webkit-transform: rotate(-45deg);
           transform: rotate(-45deg);
+}
+.debug {
+  border: 1px solid red;
 }

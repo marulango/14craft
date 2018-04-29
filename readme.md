@@ -6,7 +6,7 @@ Couldn't find anything that I liked in 10 minutes so I took 3 4 hours to write s
 Wanna run this locally? Awesome!
 1. Have Node and NPM
 2. Clone the repo
-3. `npm install`
+3. `npm install --save-dev`
 
 *Note:* _Currently, this uses PostCSS for CSS because…I really have no good reason other than I was lazy to think a better way for autoprefixer._
 
